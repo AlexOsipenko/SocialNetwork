@@ -2,14 +2,10 @@ import React from "react";
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-let PostsData = [
-    {id: 1, message: 'hello everyone'},
-    {id: 2, message: 'its my blog'},
-    {id: 3, message: 'like twitter'},
-    {id: 4, message: 'but better'}
-]
 
-const MyPosts = () => {
+
+const MyPosts = (props) => {
+    let newPostsData = props.PostsData.map(post => <Post message={post.message}/>)
     return (
         <div>
             <div><textarea/>
@@ -18,10 +14,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div>
-                <Post message={PostsData[0].message}/>
-                <Post message={PostsData[1].message}/>
-                <Post message={PostsData[2].message}/>
-                <Post message={PostsData[3].message}/>
+                {newPostsData}
             </div>
         </div>
     )

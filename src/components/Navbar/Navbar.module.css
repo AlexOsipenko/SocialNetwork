@@ -12,3 +12,8 @@
 .item a.active{
     color: goldenrod;
 }
+
+.friends{
+    margin: 40px 0 0 -30px;
+    font-size: 40px;
+}

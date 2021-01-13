@@ -10,25 +10,25 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 
 
-const App = () => {
-  return (
-      <BrowserRouter>
-          <div className='app-wrapper'>
-              <Header/>
-              <Navbar/>
-              <div className='app-wrapper-content'>
-                  <Route  path='/dialogs' component={Dialogs}/>
-                  <Route  path='/profile' component={Profile}/>
-                  <Route  path='/music' component={Music}/>
-                  <Route  path='/news' component={News}/>
-                  <Route  path='/settings' component={Settings}/>
-              </div>
-          </div>
-      </BrowserRouter>
-  );
+const App = (props) => {
+    return (
+        <BrowserRouter>
+            <div className='app-wrapper'>
+                <Header/>
+                <Navbar/>
+                <div className='app-wrapper-content'>
+                    <Route path='/music' component={Music}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/settings' component={Settings}/>
+                    <Route path='/dialogs'
+                           render={() => <Dialogs
+                               state={props.state.DialogsPage}/>}/>
+                    <Route path='/profile' render={() => <Profile state={props.state.ProfilePage}/>}/>
+                </div>
+            </div>
+        </BrowserRouter>
+    );
 }
-
-
 
 
 export default App;
