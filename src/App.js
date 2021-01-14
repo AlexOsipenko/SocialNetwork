@@ -23,7 +23,8 @@ const App = (props) => {
                     <Route path='/dialogs'
                            render={() => <Dialogs
                                state={props.state.DialogsPage}/>}/>
-                    <Route path='/profile' render={() => <Profile state={props.state.ProfilePage}/>}/>
+                    <Route path='/profile' render={() => <Profile state={props.state.ProfilePage}
+                                                                  addPost={props.addPost}/>}/>
                 </div>
             </div>
         </BrowserRouter>

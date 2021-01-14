@@ -6,11 +6,18 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
     let newPostsData = props.PostsData.map(post => <Post message={post.message}/>)
+    let newPostElement = React.createRef()
+    const newPost = () => {
+        let text = newPostElement.current.value;
+        props.addPost(text);
+    }
+
+
     return (
         <div>
-            <div><textarea/>
+            <div><textarea ref={newPostElement}></textarea>
                 <div>
-                    <button>new post</button>
+                    <button onClick={ newPost }>new post</button>
                 </div>
             </div>
             <div>
