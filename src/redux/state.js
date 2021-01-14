@@ -1,3 +1,5 @@
+import {rerender} from "../render";
+
 let state = {
     DialogsPage: {
         DialogsData: [
@@ -28,7 +30,7 @@ export let AddPost = (postMessage) => {
     }
 
     state.ProfilePage.PostsData.push(newPost)
-
+    rerender(state)
 }
 
 

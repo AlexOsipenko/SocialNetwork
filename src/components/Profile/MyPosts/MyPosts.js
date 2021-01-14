@@ -10,6 +10,7 @@ const MyPosts = (props) => {
     const newPost = () => {
         let text = newPostElement.current.value;
         props.addPost(text);
+        newPostElement.current.value = ''
     }
 
 
@@ -21,7 +22,7 @@ const MyPosts = (props) => {
                 </div>
             </div>
             <div>
-                {newPostsData}
+                {newPostsData.reverse()}
             </div>
         </div>
     )
