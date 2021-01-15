@@ -20,16 +20,23 @@ let state = {
             {id: 3, message: 'like twitter'},
             {id: 4, message: 'but better'},
         ],
+        NewPost: '',
     },
 }
 
-export let AddPost = (postMessage) => {
+export let AddPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage
+        message: state.ProfilePage.NewPost
     }
 
     state.ProfilePage.PostsData.push(newPost)
+    state.ProfilePage.NewPost = ''
+    rerender(state)
+}
+
+export let updateNewPost = (newText) => {
+    state.ProfilePage.NewPost = newText
     rerender(state)
 }
 
