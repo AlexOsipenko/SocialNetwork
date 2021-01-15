@@ -1,24 +1,23 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state, {subscribe} from './redux/state'
+import store from './redux/state'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {AddPost, updateNewPost} from './redux/state'
 
-let rerender = () => {
+let rerender = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={AddPost} updatePost={updateNewPost}/>
+            <App state={state} addPost={store.AddPost.bind(store)} updatePost={store.updateNewPost.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-rerender(state)
+rerender(store.getState())
 
-subscribe(rerender)
+store.subscribe(rerender)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
