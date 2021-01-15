@@ -1,4 +1,6 @@
-import {rerender} from "../render";
+let rerender = () => {
+    console.log('change')
+}
 
 let state = {
     DialogsPage: {
@@ -24,7 +26,7 @@ let state = {
     },
 }
 
-export let AddPost = () => {
+export const AddPost = () => {
     let newPost = {
         id: 5,
         message: state.ProfilePage.NewPost
@@ -35,11 +37,14 @@ export let AddPost = () => {
     rerender(state)
 }
 
-export let updateNewPost = (newText) => {
+export const updateNewPost = (newText) => {
     state.ProfilePage.NewPost = newText
     rerender(state)
 }
 
+export const subscribe = (observer) => {
+    rerender = observer
+}
 
 export default state;
 
