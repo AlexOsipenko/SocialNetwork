@@ -1,3 +1,7 @@
+const UPDATE_NEW_POST = 'UPDATE-NEW-POST'
+const ADD_POST = 'ADD-POST'
+
+
 let store = {
     _state: {
         DialogsPage: {
@@ -22,19 +26,19 @@ let store = {
             NewPost: '',
         },
     },
-    _callSubscriber  () {
+    _callSubscriber() {
         console.log('change')
     },
 
-    getState () {
+    getState() {
         return this._state
     },
-    subscribe  (observer)  {
+    subscribe(observer) {
         this._callSubscriber = observer
     },
 
-    dispatch(action){
-        if (action.type === 'ADD-POST'){
+    dispatch(action) {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
                 message: this._state.ProfilePage.NewPost
@@ -43,8 +47,7 @@ let store = {
             this._state.ProfilePage.PostsData.push(newPost)
             this._state.ProfilePage.NewPost = ''
             this._callSubscriber(this._state)
-        }
-        else if (action.type === 'UPDATE-NEW-POST'){
+        } else if (action.type === UPDATE_NEW_POST) {
             this._state.ProfilePage.NewPost = action.newText
             this._callSubscriber(this._state)
         }
@@ -53,6 +56,8 @@ let store = {
 
 }
 
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const changePostActionCreator = (text) => ({type: UPDATE_NEW_POST, newText: text})
 
 export default store;
 
