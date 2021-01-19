@@ -11,6 +11,7 @@ const Navbar = () => {
             <div className={style.item}><NavLink to='/news' activeClassName={style.active}>News</NavLink></div>
             <div className={style.item}><NavLink to='/music' activeClassName={style.active}>Music</NavLink></div>
             <div className={style.item}><NavLink to='/settings' activeClassName={style.active}>Settings</NavLink></div>
+            <div className={style.item}><NavLink to='/users' activeClassName={style.active}>Find user</NavLink></div>
             <div className={`${style.item} ${style.friends}`}><NavLink to='/friends' activeClassName={style.active}>Friends</NavLink></div>
         </nav>
     )
