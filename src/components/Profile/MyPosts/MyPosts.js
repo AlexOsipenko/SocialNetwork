@@ -5,7 +5,7 @@ import Post from "./Post/Post";
 
 
 const MyPosts = (props) => {
-    let newPostsData = props.ProfilePage.PostsData.map(post => <Post message={post.message}/>)
+    let newPostsData = props.ProfilePage.PostsData.map(post => <Post key={post.id} message={post.message}/>)
     let newPostElement = React.createRef()
     const addPost = () => {
         props.addPost()
