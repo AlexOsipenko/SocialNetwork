@@ -4,7 +4,7 @@ const SET_USERS = 'SET-USERS'
 
 let initialState = {
     users: [
-        {
+       /* {
             id: 1, photoUrl:'https://i.pinimg.com/originals/53/82/61/53826112b69fc3c9318fdedd7a0fbd44.jpg',
             followed: false, fullName: 'Alex Osipenko', status: 'безумно можно быть первым',
             location: {city: 'Moscow', country: 'Russia'}
@@ -23,7 +23,7 @@ let initialState = {
             id: 4, photoUrl:'https://metaratings.ru/upload/iblock/09a/09a843d2670becf4d9c14ca45b027202.jpg',
             followed: false, fullName: 'Lionel Messi', status: '6 golden ball',
             location: {city: 'Rosario', country: 'Argentina'}
-        },
+        },*/
     ],
 }
 
