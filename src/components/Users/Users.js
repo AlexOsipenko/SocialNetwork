@@ -1,56 +1,35 @@
 import React from "react";
-import style from './Users.module.css'
-import axios from "axios";
-import userPhoto from '../../static/img/no-avatar.png'
+import style from "./Users.module.css";
+import userPhoto from "../../static/img/no-avatar.png";
 
+let Users = (props) => {
 
-class Users extends React.Component {
-    constructor(props) {
-        super(props);
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages =[]
+    for (let i=1; i<=pagesCount; i++){
+        pages.push(i)
     }
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-            this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
-            })
-    }
-    changePage(page) {
-        this.props.setCurrentPage(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-            .then(response => {
-            this.props.setUsers(response.data.items)})
-    }
-    render() {
-
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
-        let pages =[]
-        for (let i=1; i<=pagesCount; i++){
-            pages.push(i)
-        }
-
-
-        return (
-            <div>
-                {pages.map(page => {
-                    return(
-                    <span className={this.props.currentPage === page && style.currentPage} onClick={()=>{
-                        this.changePage(page)
+    return (
+        <div>
+            {pages.map(page => {
+                return(
+                    <span className={props.currentPage === page && style.currentPage} onClick={()=>{
+                        props.changePage(page)
                     }}>{page}</span>
 
-                    )})}
-                {this.props.users.map((user) =><div key={user.id}>
+                )})}
+            {props.users.map((user) =><div key={user.id}>
                 <span>
                     <div>
                         <img className={style.photo}
                              src={user.photos.small != null ? user.photos.small : userPhoto}/>
                     </div>
                     <div>
-                        {user.followed ? <button onClick={()=>{this.props.unfollow(user.id)}}>Unfollow</button> :
-                            <button onClick={()=>{this.props.follow(user.id)}}>Follow</button>}
+                        {user.followed ? <button onClick={()=>{props.unfollow(user.id)}}>Unfollow</button> :
+                            <button onClick={()=>{props.follow(user.id)}}>Follow</button>}
                     </div>
                 </span>
-                    <span>
+                <span>
                     <span>
                         <div>{user.name}</div>
                         <div>{user.status}</div>
@@ -60,12 +39,10 @@ class Users extends React.Component {
                         <div>{'user.location.city'}</div>
                     </span>
                 </span>
-                </div>)}
-            </div>
-        )
-    }
+            </div>)}
+        </div>
+    )
+
 }
-
-
 
 export default Users
